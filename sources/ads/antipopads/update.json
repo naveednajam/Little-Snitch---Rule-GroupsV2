@@ -1,0 +1,17 @@
+{
+    "name": "antipopads",
+    "description": "Block Ads from various ad servers",
+    "category": "ads",
+    "type": "domain",
+    "homeurl": "https://github.com/Yhonay/antipopads",
+    "frequency": "occasionally",
+    "issues": "",
+    "compressed": false,
+    "url": "https://raw.githubusercontent.com/Yhonay/antipopads/master/hosts",
+    "url2": "https://github.com/Ultimate-Hosts-Blacklist/antipopads/raw/master/output/domains/ACTIVE/list",
+    "license": "WTFPL",
+    "numberofrules": 65,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 43,
+    "lastupdateactiverule": ""
+}

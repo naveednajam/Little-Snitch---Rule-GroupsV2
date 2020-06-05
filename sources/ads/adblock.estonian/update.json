@@ -1,0 +1,15 @@
+{
+    "name": "adblock.estonian",
+    "description": "Internet almost without advertising for Estonian User",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "http://gurud.ee/",
+    "frequency": "occasionally",
+    "issues": "",
+    "url": "http://gurud.ee/ab.txt",
+    "license": "All Rights Reserved",
+    "numberofrules": 41,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

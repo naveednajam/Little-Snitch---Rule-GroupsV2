@@ -1,0 +1,13 @@
+{
+    "name": "porn.list.light",
+    "description": "a correlated list to only block porn sites that appear on Alex'a top 1m site list",
+    "category": "Porn",
+    "type": "domain",
+    "homeurl": "https://github.com/chadmayfield/my-pihole-blocklists",
+    "frequency": "occasional",
+    "issues": "https://github.com/chadmayfield/my-pihole-blocklists/issues",
+    "url": "https://raw.githubusercontent.com/chadmayfield/my-pihole-blocklists/master/lists/pi_blocklist_porn_top1m.list",
+    "license": "GPLv3",
+    "numberofrules": 4578,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

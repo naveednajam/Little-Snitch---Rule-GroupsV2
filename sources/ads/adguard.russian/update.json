@@ -1,0 +1,15 @@
+{
+    "name": "adguard.russian",
+    "description": "AdGuard Russian Adblocking Filters",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/AdguardTeam/AdguardFilters",
+    "frequency": "occasionally",
+    "issues": "https://github.com/AdguardTeam/AdguardFilters/issues",
+    "url": "https://filters.adtidy.org/extension/chromium/filters/1.txt",
+    "license": "CC BY-SA 3.0",
+    "numberofrules": 8918,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

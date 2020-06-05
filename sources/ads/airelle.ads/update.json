@@ -1,0 +1,16 @@
+{
+    "name": "airelle.ads",
+    "description": "Block sites according to the cateogry",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "http://rlwpx.free.fr/WPFF/hosts.htm",
+    "frequency": "occasionally",
+    "issues": "",
+    "compressed": true,
+    "url": "http://rlwpx.free.fr/WPFF/hpub.7z",
+    "license": "CC BY-NC 3.0",
+    "numberofrules": 30827,
+    "lastupdate": "01/06/2020 00:05 UTC+8",
+    "activerules": 43,
+    "lastupdateactiverule": ""
+}

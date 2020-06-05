@@ -1,0 +1,13 @@
+{
+    "name": "mvps.org",
+    "description": "The purpose of this site is to provide the user with a high quality custom HOSTS file.",
+    "category": "Adware / Tracking",
+    "type": "domain",
+    "homeurl": "http://winhelp2002.mvps.org/",
+    "frequency": "monthly",
+    "issues": "mailto:winhelp2002@gmail.com",
+    "url": "http://winhelp2002.mvps.org/hosts.txt",
+    "license": "CC BY-NC-SA 4.0",
+    "numberofrules": 786,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

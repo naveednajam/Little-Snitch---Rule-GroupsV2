@@ -1,0 +1,13 @@
+{
+    "name": "add.Risk",
+    "description": "Risk content sites based on [hostsfile.org](http://www.hostsfile.org/hosts.html) content.",
+    "category": "Riskware",
+    "type": "domain",
+    "homeurl": "https://github.com/FadeMind/hosts.extras",
+    "frequency": "occasionally",
+    "issues": "https://github.com/FadeMind/hosts.extras/issues",
+    "url": "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts",
+    "license": "GPLv3+",
+    "numberofrules": 1506,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

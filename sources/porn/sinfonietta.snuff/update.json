@@ -1,0 +1,15 @@
+{
+    "name": "sinfonietta.snuffsites",
+    "description": "A collection of category-specific host files.",
+    "category": "Porn",
+    "type": "domain",
+    "homeurl": "https://github.com/Sinfonietta/hostfiles",
+    "frequency": "occasional",
+    "issues": "https://github.com/Sinfonietta/hostfiles/issues",
+    "url": "https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/snuff-hosts",
+    "license": "MIT",
+    "numberofrules": 14,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 11,
+    "lastupdateactiverule": "02/02/2020 03:33 UTC+8"
+}

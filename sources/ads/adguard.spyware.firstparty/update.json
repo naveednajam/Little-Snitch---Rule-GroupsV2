@@ -1,0 +1,15 @@
+{
+    "name": "adguard.spyware.firstparty",
+    "description": "Blocklist of tracking servers",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/AdguardTeam/AdguardFilters",
+    "frequency": "occasionally",
+    "issues": "https://github.com/AdguardTeam/AdguardFilters/issues",
+    "url": "https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/tracking_servers_firstparty.txt",
+    "license": "CC BY-SA 3.0",
+    "numberofrules": 1289,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

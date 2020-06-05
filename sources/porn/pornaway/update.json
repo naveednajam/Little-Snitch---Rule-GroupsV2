@@ -1,0 +1,13 @@
+{
+    "name": "pornaway",
+    "description": "Block Porn Sites",
+    "category": "Porn",
+    "type": "domain",
+    "homeurl": "https://github.com/mhxion/pornaway",
+    "frequency": "occasional",
+    "issues": "https://github.com/mhxion/pornaway/issues",
+    "url": "https://raw.githubusercontent.com/mhxion/pornaway/master/hosts/porn_ads.txt",
+    "license": "MIT",
+    "numberofrules": 526,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

@@ -1,0 +1,14 @@
+{
+    "name": "pl-host-file",
+    "description": "Blocking with ad server server hostnames.",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/xxcriticxx/.pl-host-file",
+    "frequency": "frequently",
+    "issues": "https://github.com/xxcriticxx/.pl-host-file/issues",
+    "url": "https://raw.githubusercontent.com/xxcriticxx/.pl-host-file/master/hosts.txt",
+    "url2": "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/pl-host-file/master/output/domains/ACTIVE/list",
+    "numberofrules": 380,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "license": "The Unlicense"
+}

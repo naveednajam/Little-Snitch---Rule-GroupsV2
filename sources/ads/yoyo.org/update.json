@@ -1,0 +1,13 @@
+{
+    "name": "yoyo.org",
+    "description": "Blocking with ad server and tracking server hostnames.",
+    "category": "Adware / Tracking",
+    "type": "domain",
+    "homeurl": "https://pgl.yoyo.org/adservers/",
+    "frequency": "frequently",
+    "issues": "mailto:pgl@yoyo.org",
+    "url": "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0",
+    "numberofrules": 532,
+    "license": "MCRAE GENERAL PUBLIC LICENSE (version 4.r53)",
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

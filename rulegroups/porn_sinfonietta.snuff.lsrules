@@ -1,0 +1,21 @@
+{
+    "description": "Source: https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/snuff-hosts | Unique Domains: 14 |  Last Update: 01/06/2020 00:00 UTC+8",
+    "name": "porn_sinfonietta.snuff",
+    "priority": "regular",
+    "denied-remote-domains": [
+        "bitcheese.net",
+        "horriblevideos.com",
+        "documentingreality.com",
+        "deathaddict.com",
+        "deathandreality.com",
+        "gorebrasil.com",
+        "goregrish.com",
+        "leakreality.com",
+        "miscopy.com",
+        "mixtape.moe",
+        "sickjunk.com",
+        "elblogdelnarco.com",
+        "ogrish.tv",
+        "thepinsta.com"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "marktron.fakenews",
+    "description": "An in-progress collection of fake news outlets.",
+    "category": "Fake News",
+    "type": "domain",
+    "homeurl": "https://github.com/marktron/fakenews",
+    "frequency": "occasional",
+    "issues": "https://github.com/marktron/fakenews/issues",
+    "url": "https://raw.githubusercontent.com/marktron/fakenews/master/fakenews",
+    "license": "MIT",
+    "numberofrules": 874,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

@@ -1,0 +1,17 @@
+{
+    "name": "adaway",
+    "description": "AdAway is an open source ad blocker for Android",
+    "category": "ads",
+    "type": "domain",
+    "homeurl": "https://adaway.org/",
+    "frequency": "occasionally",
+    "issues": "https://github.com/AdAway/AdAway/issues",
+    "compressed": false,
+    "url": "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt",
+    "url2": "",
+    "license": "CC BY 3.0",
+    "numberofrules": 7396,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 43,
+    "lastupdateactiverule": ""
+}

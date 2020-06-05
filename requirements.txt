@@ -1,0 +1,2 @@
+PyFunceble==2.2.0
+libarchive~=0.4.7

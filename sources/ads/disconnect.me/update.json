@@ -1,0 +1,17 @@
+{
+    "name": "disconnect.me",
+    "description": "block ads",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "disconnect.me",
+    "frequency": "occasionally",
+    "issues": "",
+    "compressed": false,
+    "url": "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt",
+    "url2": "https://github.com/Ultimate-Hosts-Blacklist/Ads_Disconnect.me/raw/master/output/domains/ACTIVE/list",
+    "license": "GPLv3",
+    "numberofrules": 347,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 43,
+    "lastupdateactiverule": "02/02/2020 03:32 UTC+8"
+}

@@ -1,0 +1,16 @@
+{
+    "name": "airelles.antisex",
+    "description": "Block sites according to the cateogry",
+    "category": "Porn",
+    "type": "domain",
+    "homeurl": "http://rlwpx.free.fr/WPFF/hosts.htm",
+    "frequency": "occasionally",
+    "issues": "",
+    "compressed": true,
+    "url": "http://rlwpx.free.fr/WPFF/hsex.7z",
+    "license": "CC BY-NC 3.0",
+    "numberofrules": 302343,
+    "lastupdate": "01/06/2020 00:05 UTC+8",
+    "activerules": 43,
+    "lastupdateactiverule": ""
+}

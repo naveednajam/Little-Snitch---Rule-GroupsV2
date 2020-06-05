@@ -1,0 +1,15 @@
+{
+    "name": "easylist",
+    "description": "easylist domains ",
+    "category": "Ads / Tracking / Malware /Porn",
+    "type": "domain",
+    "homeurl": "https://easylist.to/",
+    "frequency": "occasionally",
+    "issues": "https://easylist.to/",
+    "url": "https://easylist.to/easylist/easylist.txt",
+    "license": "GPLv3",
+    "numberofrules": 27295,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

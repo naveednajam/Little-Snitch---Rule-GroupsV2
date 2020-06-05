@@ -1,0 +1,15 @@
+{
+    "name": "1host.pro",
+    "description": "1Hosts Pro domains ",
+    "category": "Ads / Tracking / Malware",
+    "type": "domain",
+    "homeurl": "https://github.com/badmojr/1Hosts/tree/master/Pro",
+    "frequency": "occasionally",
+    "issues": "https://github.com/badmojr/1Hosts/issues",
+    "url": "https://badmojr.github.io/1Hosts/Pro/hosts.txt",
+    "license": "All Rights Reserved,",
+    "numberofrules": 98136,
+    "lastupdate": "01/06/2020 00:05 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

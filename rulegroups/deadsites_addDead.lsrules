@@ -1,0 +1,20 @@
+{
+    "description": "Source: https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Dead/hosts | Unique Domains: 13 |  Last Update: 05/05/2020 13:52 UTC+8",
+    "name": "deadsites_addDead",
+    "priority": "regular",
+    "denied-remote-domains": [
+        "avast-downloads.com",
+        "blacksnake.com",
+        "europcareer.com",
+        "get-avast.com",
+        "google-docs.info",
+        "gooqleapi.com",
+        "iphonegames3g.com",
+        "jmp2click.com",
+        "microsoft-update.name",
+        "paypai.org",
+        "sunonsunday.com",
+        "thesunonsunday.com",
+        "toolbar.wibiya.com"
+    ]
+}

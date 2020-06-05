@@ -1,0 +1,15 @@
+{
+    "name": "adguard.dns",
+    "description": "AdGuard Simplified Domain names filter",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/AdguardTeam/AdguardSDNSFilter",
+    "frequency": "occasionally",
+    "issues": "https://github.com/AdguardTeam/AdguardSDNSFilter/issues",
+    "url": "https://filters.adtidy.org/extension/chromium/filters/15.txt",
+    "license": "CC BY-SA 3.0",
+    "numberofrules": 7453,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

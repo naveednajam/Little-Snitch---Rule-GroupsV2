@@ -1,0 +1,13 @@
+{
+    "name": "anudeep.coinminer",
+    "description": "Curated and well-maintained host file to block coinmining",
+    "category": "Mining / CoinBlocker",
+    "type": "domain",
+    "homeurl": "https://github.com/anudeepND/blacklist",
+    "frequency": "weekly",
+    "issues": "https://github.com/anudeepND/blacklist/issues",
+    "url": "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt",
+    "license": "MIT",
+    "numberofrules": 7293,
+    "lastupdate": "01/06/2020 00:04 UTC+8"
+}

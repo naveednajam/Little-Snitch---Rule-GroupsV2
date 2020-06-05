@@ -1,0 +1,13 @@
+{
+    "name": "easylist.adult",
+    "description": "EasyList Adult Adservers Thirdparty Blocking Filter",
+    "category": "Porn",
+    "type": "domain",
+    "homeurl": "https://github.com/easylist/easylist/",
+    "frequency": "occasional",
+    "issues": "https://github.com/easylist/easylist/issues",
+    "url": "https://raw.githubusercontent.com/easylist/easylist/master/easylist_adult/adult_thirdparty.txt",
+    "license": "GPLv3",
+    "numberofrules": 387,
+    "lastupdate": "25/05/2020 00:00 UTC+8"
+}

@@ -1,0 +1,13 @@
+{
+    "name": "stevenblack",
+    "description": "Additional sketch domains as I come across them.",
+    "category": "Ads / Malware",
+    "type": "domain",
+    "homeurl": "https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts",
+    "frequency": "occasionally",
+    "issues": "https://github.com/StevenBlack/hosts/issues",
+    "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts",
+    "license": "MIT",
+    "numberofrules": 2002,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

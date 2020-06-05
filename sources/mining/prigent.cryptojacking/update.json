@@ -1,0 +1,15 @@
+{
+    "name": "prigent.cryptojacking",
+    "description": "Block sites which Mine by hijacking",
+    "category": "Mining",
+    "type": "domain",
+    "homeurl": "https://dsi.ut-capitole.fr/blacklists/index_en.php",
+    "frequency": "weekly",
+    "issues": "",
+    "compressed": true,
+    "filename": "domains",
+    "url": "http://dsi.ut-capitole.fr/blacklists/download/cryptojacking.tar.gz",
+    "license": "CC BY-SA 4.0",
+    "numberofrules": 7144,
+    "lastupdate": "01/06/2020 00:00 UTC+8"
+}

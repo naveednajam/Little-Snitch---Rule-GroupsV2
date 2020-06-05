@@ -1,0 +1,15 @@
+{
+    "name": "adblockid",
+    "description": "Indonesian ad block filter list ",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/realodix/AdBlockID",
+    "frequency": "occasionally",
+    "issues": "https://github.com/realodix/AdBlockID/issues",
+    "url": "https://raw.githubusercontent.com/realodix/AdBlockID/master/output/adblockid.txt",
+    "license": "GPLv3",
+    "numberofrules": 1914,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

@@ -1,0 +1,15 @@
+{
+    "name": "adblock.iran",
+    "description": "Ad blocking rules for iran websites",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/farrokhi/adblock-iran",
+    "frequency": "occasionally",
+    "issues": "",
+    "url": "https://raw.githubusercontent.com/farrokhi/adblock-iran/master/filter.txt",
+    "license": "BSD-2-Clause",
+    "numberofrules": 535,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}

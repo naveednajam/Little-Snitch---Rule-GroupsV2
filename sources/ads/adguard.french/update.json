@@ -1,0 +1,15 @@
+{
+    "name": "adguard.french",
+    "description": "AdGuard French Adblocking Filters",
+    "category": "Ads",
+    "type": "domain",
+    "homeurl": "https://github.com/AdguardTeam/AdguardFilters",
+    "frequency": "occasionally",
+    "issues": "https://github.com/AdguardTeam/AdguardFilters/issues",
+    "url": "https://filters.adtidy.org/extension/chromium/filters/16.txt",
+    "license": "CC BY-SA 3.0",
+    "numberofrules": 7710,
+    "lastupdate": "01/06/2020 00:00 UTC+8",
+    "activerules": 0,
+    "lastupdateactiverule": ""
+}
