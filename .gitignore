@@ -134,7 +134,7 @@ dmypy.json
 
 # Filesystem Attribute files
 .DS_Store
-
+.idea/
 <<<<<<< HEAD
 
 =======
