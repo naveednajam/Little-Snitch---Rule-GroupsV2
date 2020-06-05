@@ -131,6 +131,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Filesystem Attribute files
+.DS_Store
+
 <<<<<<< HEAD
 
 =======
