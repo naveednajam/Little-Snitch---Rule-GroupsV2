@@ -53,7 +53,7 @@ def main():
     # hostnames = get_default_hostnames()
 
     # update all source files
-    update_all_sources()
+    #update_all_sources()
 
     if not os.path.exists(settings["destinationpath"]):
         os.makedirs(settings["destinationpath"])
@@ -100,7 +100,10 @@ def create_rulegroups(outputpath):
         source_file_url = file
         try:
             if os.path.exists(domain_file_url):
-                domain_count, file_count = convert_to_lsrules(domain_file_url, source_file_url, "domain", outputpath)
+                #domain_count, file_count = convert_to_lsrules(domain_file_url, source_file_url, "domain", outputpath)
+                #domain_count, file_count = convert_to_ruleset(file_url=domain_file_url,update_file_url=source_file_url,type="domain",destination_path=outputpath)
+                domain_count, file_count = convert_to_ruleset_unified(file_url=domain_file_url, update_file_url=source_file_url,
+                                                              type="domain", destination_path=outputpath)
                 item = update_hosts_catalog(source_file_url, domain_count, file_count)
                 hosts_catalog.append(item)
             elif os.path.exists(ipv4_file_url):
@@ -262,8 +265,6 @@ def convert_ipv4_to_lsrules(ip_file_url, source_file_url, type="ip", destination
         "description": "Date and Time Info of last update", "name": "ip list",
         "rules": []
         }
-    # to block ip address
-    key = "remote-addresses"
 
     domains = []
     #read ipv4 file
@@ -370,6 +371,269 @@ def convert_ipv4_to_lsrules(ip_file_url, source_file_url, type="ip", destination
     return total_domains, file_count
 
 
+def convert_to_ruleset(file_url, update_file_url, type="domain", destination_path="."):
+    global hostnames
+    global duplicates
+
+    rulegroup = {
+        "description": "Date and Time Info of last update", "name": "ip list",
+        "rules": []
+        }
+    # to block ip address
+    # to block ip address
+    if type == "domain":
+        key = "remote-domains"
+    elif type == "ip":
+        key = "remote-addresses"
+    elif type == "host":
+        key = "remote-hosts"
+
+    domains = []
+    if type == "domain" or type == "host":
+        with open(file_url, encoding='utf-8') as file_data:
+            # alternate method to achieve same results
+            # domains = list(map(extract_hostname,[line.strip() if not re.search(r'^[w]{3}\.', line) else re.sub(r'^[w]{3}\.', "", line.strip()) for line in file_data.readlines()]))
+            for domain in file_data.readlines():
+                # domain = extract_hostname(line)
+                domain = domain.strip()
+
+                if (domain not in hostnames):
+                    domains.append(domain)
+                    hostnames.add(domain)
+                else:
+                    duplicates += 1
+    elif type == "ip":
+        #read ipv4 file
+        with open(file_url, encoding='utf-8') as file_data:
+            for ip in file_data.readlines():
+                domains.append(ip.strip())
+
+
+    parent_dir = os.path.basename(os.path.split(os.path.split(file_url)[0])[0])
+    # drive output file name
+    if not ("sources" in parent_dir):
+        rule_file_name = parent_dir + "_" + os.path.basename(os.path.split(file_url)[0])
+    else:
+        rule_file_name = os.path.basename(os.path.split(file_url)[0])
+
+    with open(update_file_url, "r", encoding='utf-8') as info_file:
+        update_json = json.load(info_file)
+        try:
+            direction = update_json["direction"]
+        except KeyError:
+            direction = "outgoing"
+            pass
+
+    file_count = 0
+    start = 0
+    max_domain_limit = 200000
+    total_domains = len(domains)
+
+    if (total_domains > max_domain_limit):
+        domain_count = total_domains
+
+        while (domain_count > max_domain_limit):
+            rulegroup["name"] = rule_file_name + str(file_count)
+            rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+                len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+            remote_addresses = domains[start:(start + max_domain_limit)]
+            rulegroup["rules"] = rule_list(remote_addresses,"deny",direction=direction,priority="regular",key=key)
+
+            lsrules = json.dumps(rulegroup, indent=4)
+
+            if (destination_path != ".") and (len(remote_addresses)):
+                with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                    lsfile.write(lsrules)
+            elif len(remote_addresses):
+                with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                          encoding='utf-8') as lsfile:
+                    lsfile.write(lsrules)
+
+            file_count += 1
+            domain_count = domain_count - max_domain_limit
+            start = start + max_domain_limit
+
+        rulegroup["name"] = rule_file_name + str(file_count)
+        rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+            len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+        remote_addresses = domains[start:]
+        rulegroup["rules"] = rule_list(remote_addresses, "deny", direction=direction, priority="regular", key=key)
+
+        lsrules = json.dumps(rulegroup, indent=4)
+        if (destination_path != ".") and (len(remote_addresses)):
+            with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+        elif len(remote_addresses):
+            with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                      encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+    else:
+        rulegroup["name"] = rule_file_name
+        rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+        len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+        rulegroup["rules"] = rule_list(domains,"deny",direction=direction,priority="regular",key=key)
+
+        lsrules = json.dumps(rulegroup, indent=4)
+
+        if (destination_path != ".") and (len(domains)):
+            with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+        elif len(domains):
+            with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                      encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+
+    # crete iptables rule files - For Future use
+    # createiptablesrules(domains, rule_file_name, destination_path)
+
+    # return number of domains converted to rule group format
+    return total_domains, file_count
+
+
+def convert_to_ruleset_unified(file_url, update_file_url, type="domain", destination_path="."):
+    global hostnames
+    global duplicates
+
+    rulegroup = {
+        "description": "Date and Time Info of last update", "name": "ip list",
+        "rules": []
+        }
+    # to block ip address
+    # to block ip address
+    if type == "domain":
+        key = "remote-domains"
+    elif type == "ip":
+        key = "remote-addresses"
+    elif type == "host":
+        key = "remote-hosts"
+
+    domains = []
+    if type == "domain" or type == "host":
+        with open(file_url, encoding='utf-8') as file_data:
+            # alternate method to achieve same results
+            # domains = list(map(extract_hostname,[line.strip() if not re.search(r'^[w]{3}\.', line) else re.sub(r'^[w]{3}\.', "", line.strip()) for line in file_data.readlines()]))
+            for domain in file_data.readlines():
+                # domain = extract_hostname(line)
+                domain = domain.strip()
+
+                if (domain not in hostnames):
+                    domains.append(domain)
+                    hostnames.add(domain)
+                else:
+                    duplicates += 1
+    elif type == "ip":
+        #read ipv4 file
+        with open(file_url, encoding='utf-8') as file_data:
+            for ip in file_data.readlines():
+                domains.append(ip.strip())
+
+
+    parent_dir = os.path.basename(os.path.split(os.path.split(file_url)[0])[0])
+    # drive output file name
+    if not ("sources" in parent_dir):
+        rule_file_name = parent_dir + "_" + os.path.basename(os.path.split(file_url)[0])
+    else:
+        rule_file_name = os.path.basename(os.path.split(file_url)[0])
+
+    with open(update_file_url, "r", encoding='utf-8') as info_file:
+        update_json = json.load(info_file)
+        try:
+            direction = update_json["direction"]
+        except KeyError:
+            direction = "outgoing"
+            pass
+
+    file_count = 0
+    start = 0
+    max_domain_limit = 200000
+    total_domains = len(domains)
+
+    if (total_domains > max_domain_limit):
+        domain_count = total_domains
+
+        while (domain_count > max_domain_limit):
+            rulegroup["name"] = rule_file_name + str(file_count)
+            rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+                len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+            remote_addresses = domains[start:(start + max_domain_limit)]
+            rule = {"action": "deny",
+                    "direction": direction,
+                    "priority": "regular",
+                    "process": "any",
+                    key: ",".join(remote_addresses)
+                    }
+            rulegroup["rules"].append(rule)
+
+            lsrules = json.dumps(rulegroup, indent=4)
+
+            if (destination_path != ".") and (len(remote_addresses)):
+                with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                    lsfile.write(lsrules)
+            elif len(remote_addresses):
+                with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                          encoding='utf-8') as lsfile:
+                    lsfile.write(lsrules)
+
+            file_count += 1
+            domain_count = domain_count - max_domain_limit
+            start = start + max_domain_limit
+
+        rulegroup["name"] = rule_file_name + str(file_count)
+        rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+            len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+        remote_addresses = domains[start:]
+        rule = {"action": "deny",
+                "direction": direction,
+                "priority": "regular",
+                "process": "any",
+                key: ",".join(remote_addresses)
+                }
+        rulegroup["rules"].append(rule)
+
+        lsrules = json.dumps(rulegroup, indent=4)
+        if (destination_path != ".") and (len(remote_addresses)):
+            with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+        elif len(remote_addresses):
+            with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                      encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+    else:
+        rulegroup["name"] = rule_file_name
+        rulegroup["description"] = "Source: " + update_json["url"] + " | Unique IP Ranges: " + str(
+        len(domains)) + " |  Last Update: " + update_json["lastupdate"]
+
+        rule = {"action": "deny",
+                "direction": direction,
+                "priority": "regular",
+                "process": "any",
+                key: ",".join(domains)
+                }
+        rulegroup["rules"].append(rule)
+
+        lsrules = json.dumps(rulegroup, indent=4)
+
+        if (destination_path != ".") and (len(domains)):
+            with open(os.path.join(destination_path, rulegroup["name"] + ".lsrules"), "w", encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+        elif len(domains):
+            with open(os.path.join(os.path.split(file_url)[0], rulegroup["name"] + ".lsrules"), "w",
+                      encoding='utf-8') as lsfile:
+                lsfile.write(lsrules)
+
+    # crete iptables rule files - For Future use
+    # createiptablesrules(domains, rule_file_name, destination_path)
+
+    # return number of domains converted to rule group format
+    return total_domains, file_count
+
+
+
 # convert domains to iptables rule format and write to file with .rules extension in the output directory
 def createiptablesrules(domains, rule_file_name, destination_path):
     '''
@@ -424,6 +688,17 @@ def unique(mylist):
     # convert the set to the list
     unique_list = (list(list_set))
     return unique_list
+
+def rule_list(addresses,action="deny",direction="outgoing",priority="regular",key="remote-domains"):
+    rules = []
+    for address in addresses:
+        rules.append({"action": action,
+                "direction": direction,
+                "priority": priority,
+                "process": "any",
+                key: address
+            })
+    return rules
 
 
 if __name__ == '__main__':
