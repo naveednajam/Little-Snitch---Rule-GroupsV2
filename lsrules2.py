@@ -53,7 +53,7 @@ def main():
     # hostnames = get_default_hostnames()
 
     # update all source files
-    #update_all_sources()
+    update_all_sources()
 
     if not os.path.exists(settings["destinationpath"]):
         os.makedirs(settings["destinationpath"])
