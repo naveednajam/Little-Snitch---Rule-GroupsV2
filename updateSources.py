@@ -1,4 +1,4 @@
-import fnmatch
+
 import gzip
 import logging
 import logger
@@ -88,8 +88,10 @@ def get_defaults():
         "ipv4": set(),
         "ipv6": set(),
         "bogons": set(),
-        "exclude_ipv4":set()
-
+        "exclude_ipv4":set(),
+        "tldsurl":"https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
+        "tldsfilename":"tlds-alpha-by-domain.txt",
+        "tlds":set()
     }
 
 
@@ -131,6 +133,19 @@ def update_all_sources():
 
     #download update bogons
     getfile(settings["bogonsurl"], settings["bogonsfilename"])
+
+    # download updated TLDs
+    getfile(settings["tldsurl"],settings["tldsfilename"])
+
+    # loading TLDs
+    if os.path.exists(settings["tldsfilename"]) and os.path.isfile(settings["tldsfilename"]):
+        with open(settings["tldsfilename"], "r", encoding="UTF-8") as tldslist:
+            # settings["whitelist"] = list(((line) for line in whitelistfile.readlines()))
+            settings["tlds"] = set(item.strip() for item in tldslist.readlines())
+        # log whilelist
+        log.debug("TLDs: %s", settings["tlds"])
+
+
 
     sources_path = settings["sourcespath"]
     source_data_filename = settings["sourcedatafilename"]  # update.json
@@ -197,7 +212,7 @@ def update_all_sources():
                 os.unlink(f.name)
 
             if update_data["type"] == "domain":
-                domains = list(filter(checkdomain, lines))
+                domains = list(set(filter(checkdomain, lines)) - settings["tlds"])
 
                 if len(domains):
                     with open(os.path.join(os.path.dirname(source), domain_filename), "w", encoding="UTF-8") as d:
@@ -470,7 +485,13 @@ def get_whitelist(url):
 
 def getfile(url, filepath):
     try:
-        f = urlopen(url, timeout=60)
+        req = Request(url,
+                      data=None,
+                      headers={
+                          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 Safari/537.36'
+                      }
+                      )
+        f = urlopen(req, timeout=60)
         if f.status == 200:
             lines = f.readlines()
             with open(filepath, "w",encoding="utf-8") as file_data:
