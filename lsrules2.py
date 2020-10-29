@@ -101,8 +101,8 @@ def create_rulegroups(outputpath):
         try:
             if os.path.exists(domain_file_url):
                 #domain_count, file_count = convert_to_lsrules(domain_file_url, source_file_url, "domain", outputpath)
-                #domain_count, file_count = convert_to_ruleset(file_url=domain_file_url,update_file_url=source_file_url,type="domain",destination_path=outputpath)
-                domain_count, file_count = convert_to_ruleset_unified(file_url=domain_file_url, update_file_url=source_file_url,
+                domain_count, file_count = convert_to_ruleset(file_url=domain_file_url,update_file_url=source_file_url,type="domain",destination_path=outputpath)
+                #domain_count, file_count = convert_to_ruleset_unified(file_url=domain_file_url, update_file_url=source_file_url,
                                                               type="domain", destination_path=outputpath)
                 item = update_hosts_catalog(source_file_url, domain_count, file_count)
                 hosts_catalog.append(item)
