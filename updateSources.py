@@ -91,6 +91,7 @@ def get_defaults():
         "exclude_ipv4":set(),
         "tldsurl":"https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
         "tldsfilename":"tlds-alpha-by-domain.txt",
+        "tldsfile": os.path.join(BASEDIR_PATH, "tlds-alpha-by-domain.txt"),
         "tlds":set()
     }
 
@@ -138,8 +139,8 @@ def update_all_sources():
     getfile(settings["tldsurl"],settings["tldsfilename"])
 
     # loading TLDs
-    if os.path.exists(settings["tldsfilename"]) and os.path.isfile(settings["tldsfilename"]):
-        with open(settings["tldsfilename"], "r", encoding="UTF-8") as tldslist:
+    if os.path.exists(settings["tldsfile"]) and os.path.isfile(settings["tldsfile"]):
+        with open(settings["tldsfile"], "r", encoding="UTF-8") as tldslist:
             # settings["whitelist"] = list(((line) for line in whitelistfile.readlines()))
             settings["tlds"] = set(item.strip() for item in tldslist.readlines())
         # log whilelist
