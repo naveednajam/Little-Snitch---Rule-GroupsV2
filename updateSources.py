@@ -136,7 +136,7 @@ def update_all_sources():
     getfile(settings["bogonsurl"], settings["bogonsfilename"])
 
     # download updated TLDs
-    getfile(settings["tldsurl"],settings["tldsfilename"])
+    getfile(settings["tldsurl"],settings["tldsfile"])
 
     # loading TLDs
     if os.path.exists(settings["tldsfile"]) and os.path.isfile(settings["tldsfile"]):
