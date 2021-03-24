@@ -23,6 +23,7 @@ The Ubuntu libarchive package maintainer only provides a “libarchive.so” sym
 # setup logger
 logger.setup(__name__)
 log = logging.getLogger(__name__)
+log.setLevel(os.environ.get("LOGLEVEL", "INFO"))
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
@@ -142,8 +143,9 @@ def update_all_sources():
     if os.path.exists(settings["tldsfile"]) and os.path.isfile(settings["tldsfile"]):
         with open(settings["tldsfile"], "r", encoding="UTF-8") as tldslist:
             # settings["whitelist"] = list(((line) for line in whitelistfile.readlines()))
-            settings["tlds"] = set(item.strip() for item in tldslist.readlines())
-        # log whilelist
+            settings["tlds"] = set(item.strip().lower() for item in tldslist.readlines())
+            log.info("File %s loaded successfully",settings["tldsfile"])
+        # log tldlist
         log.debug("TLDs: %s", settings["tlds"])
 
 
